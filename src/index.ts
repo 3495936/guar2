@@ -32,6 +32,6 @@ app.get("/coche/", async (req, res) => {
 });
 
 app.get("/hora/", async (req, res) => {
-  var hora = Date.now();
+  var hora = new Date;
   res.send(`La hora del servidor es: ${hora}`);
 });
