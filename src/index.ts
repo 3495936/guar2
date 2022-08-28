@@ -21,3 +21,8 @@ app.get("/", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+app.get("/coche/", async (req, res) => {
+  const { rows } = await pool.query("SELECT * from prueba");
+  res.send(`Resultado: ${rows[0]}`);
+});
