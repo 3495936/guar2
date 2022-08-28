@@ -24,6 +24,6 @@ app.listen(port, () => {
 
 app.get("/coche/", async (req, res) => {
   const { rows } = await pool.query("SELECT * from prueba");
-  var texto = rows[0].nombre;
+  var texto = rows[1].jose;
   res.send(`Resultado: ${texto}`);
 });
