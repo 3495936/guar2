@@ -15,7 +15,7 @@ app.use(bodyParser.text({ type: "text/html" }));
 
 app.get("/", async (req, res) => {
   const { rows } = await pool.query("SELECT NOW()");
-  res.send(`Hello, World! The time from the DB is ${rows[0].now}`);
+  res.send(`Hola. La hora de la BD: ${rows[0].now}`);
 });
 
 app.listen(port, () => {
@@ -24,5 +24,6 @@ app.listen(port, () => {
 
 app.get("/coche/", async (req, res) => {
   const { rows } = await pool.query("SELECT * from prueba");
-  res.send(`Resultado: ${rows.toString()}`);
+  var texto = rows.toString();
+  res.send(`Resultado: ${texto}`);
 });
