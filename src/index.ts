@@ -15,7 +15,7 @@ app.use(bodyParser.text({ type: "text/html" }));
 
 app.get("/", async (req, res) => {
   const { rows } = await pool.query("SELECT NOW()");
-  res.send(`Hola. La hora de la BD: ${rows[0].now}`);
+  res.send(`PRIMOOOOOOOO. La hora de la BD: ${rows[0].now}`);
 });
 
 app.listen(port, () => {
