@@ -39,7 +39,3 @@ app.get("/hora/", async (req, res) => {
 });
 
 // Consultas:
-app.get("/users/", async (request, response) => {
-  const { rows } = await pool.query("SELECT * FROM users ORDER BY id ASC");
-  response.status(200).json(results.rows);
-}
