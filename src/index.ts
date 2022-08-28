@@ -40,7 +40,7 @@ app.get("/hora/", async (req, res) => {
 
 // Consultas:
 app.get("/users/", async (request, response) => {
-  await pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+  const { rows } = await pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error
     }
