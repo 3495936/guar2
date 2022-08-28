@@ -30,3 +30,10 @@ app.get("/coche/", async (req, res) => {
   }
   res.send(`Resultado: ${texto}`);
 });
+
+app.get("/hora/", async (req, res) => {
+  const { rows } = await pool.query("SELECT NOW()");
+  res.send(`La hora de la BD: ${rows[0].now}`);
+  var hora = Date.now();
+  res.send(`La hora del servidor es: ${hora}`);
+});
