@@ -20,13 +20,7 @@ app.get("/", async (req, res) => {
         if (req.query.fecha !== null) {
         
         } else {
-            const { profes } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");
-            const { grupos } = await pool.query("SELECT grupo FROM grupos LIMIT 500");
-            const { horas } = await pool.query("SELECT hora FROM horas ORDER BY orden LIMIT 500");
-            const { guardiasUser } = await pool.query("SELECT diaHora FROM horarioGuardias WHERE profesor='"+req.query.id+"' LIMIT 500");
-            for (let i = 0; i < guardiasUser.length; i++) {
-                const { compas } = await pool.query("SELECT profesor, horas, puntos FROM horarioGuardias WHERE diaHora='"+guardiasUser[i].diaHora+"' LIMIT 500");
-                }
+            const { profes } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");            
             res.status(200).json('"p":'+profes);
         }
     }
