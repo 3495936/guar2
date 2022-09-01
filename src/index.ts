@@ -14,6 +14,7 @@ app.use(bodyParser.raw({ type: "application/vnd.custom-type" }));
 app.use(bodyParser.text({ type: "text/html" }));
 
 // URLs GET, POST
+let profes: Array<any>;
 
 app.get("/", async (req, res) => {
     if (req.query.id !== null) {
