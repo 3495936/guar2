@@ -20,8 +20,9 @@ app.get("/", async (req, res) => {
         if (req.query.fecha !== undefined) {
         
         } else {
-            const { rows } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");            
-            res.status(200).json('"p":'+rows);
+            const { rows } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");
+            var profes = rows;
+            res.status(200).json(profes);
         }
     }
 });
