@@ -14,15 +14,14 @@ app.use(bodyParser.raw({ type: "application/vnd.custom-type" }));
 app.use(bodyParser.text({ type: "text/html" }));
 
 // URLs GET, POST
-let profes: Array<any>;
 
 app.get("/", async (req, res) => {
     if (req.query.id !== null) {
         if (req.query.fecha !== null) {
         
         } else {
-            const { profes } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");            
-            res.status(200).json('"p":'+profes);
+            const { rows } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");            
+            res.status(200).json('"p":'+rows);
         }
     }
 });
