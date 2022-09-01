@@ -19,8 +19,8 @@ app.get("/", async (req, res) => {
     var qid = typeof req.query.id;
     var qfec = typeof req.query.fecha;
     res.send(`El ID es: ${qid} y la fecha es: ${qfec}`);
-    if (req.query.id !== null) {
-        if (req.query.fecha !== null) {
+    if (req.query.id !== undefined) {
+        if (req.query.fecha !== undefined) {
         
         } else {
             const { rows } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");            
