@@ -24,7 +24,7 @@ app.get("/", async (req, res) => {
                 async function() {
                     const { rows } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");
                     return rows;
-                })
+                });
             res.send(`p: ${profes}, g: `);
         }
     }
