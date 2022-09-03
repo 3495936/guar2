@@ -22,7 +22,7 @@ app.get("/", async (req, res) => {
         } else {
             let { rows } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");
             var profes = JSON.stringify(rows);
-            let { rows2 }  = await pool.query("SELECT grupo FROM grupos LIMIT 500");
+            let { rows }  = await pool.query("SELECT grupo FROM grupos LIMIT 500");
             var grupos = JSON.stringify(rows2);
             res.send(`p: ${profes}, g: ${grupos}`);
         }
