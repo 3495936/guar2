@@ -18,17 +18,17 @@ app.use(bodyParser.text({ type: "text/html" }));
 app.get("/", async (req, res) => {
     if (req.query.id !== undefined) {
         if (req.query.fecha !== undefined) {
-            let filas = await pool.query("SELECT profTitular, tarea FROM guardias WHERE fecha='"+req.query.fecha+"' AND diaHora='"+req.query.diaHora+"' LIMIT 500");
+          let filas = await pool.query("SELECT profTitular, tarea FROM guardias WHERE fecha='"+req.query.fecha+"' AND diaHora='"+req.query.diaHora+"' LIMIT 500");
           let guardias = new Array;
-          for (let i = 0; i < filas.length; i++) {
-            let tarea = filas.tarea;
+          for (let i = 0; i < filas.rows.length; i++) {
+            let tarea = filas.rows.tarea;
             let fila2 = await pool.query("SELECT grupo, aula, dificultad FROM horario WHERE diaHora='"+req.query.diaHora+"' AND profTitular='"+filas.profTitular+"' LIMIT 500");
             let clase = JSON.stringify(fila2.rows);
             let fila3 = await pool.query("SELECT id, nombre FROM usuarios WHERE id='"+filas.profTitular+"' LIMIT 500");
             let profe = JSON.stringify(fila3.rows);
             guardias.push('{"clase":' +clase+ ', "profesor":' +profe+ ', "tarea":' +tarea+ '}');
-          }
-            res.status(200).json(guardias);
+            }
+          res.status(200).json(guardias);
         } else {
           let filas = await pool.query("SELECT * from usuarios");
           let profes = JSON.stringify(filas.rows);
