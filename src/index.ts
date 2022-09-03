@@ -21,10 +21,21 @@ app.get("/", async (req, res) => {
             res.send(`Hola Fecha`);
         } else {
             let filas = await pool.query("SELECT * from usuarios");
-            let profes = JSON.stringify(filas.rows);
-            filas  = await pool.query("SELECT grupo FROM grupos LIMIT 500");
-            let grupos = JSON.stringify(filas.rows);
-            res.send(`p: ${profes}, g: ${grupos}`);
+          let profes = JSON.stringify(filas.rows);
+          filas  = await pool.query("SELECT grupo FROM grupos LIMIT 500");
+          let grupos = JSON.stringify(filas.rows);
+          filas = await pool.query("SELECT hora FROM horas ORDER BY orden LIMIT 500");
+          let horas = JSON.stringify(filas.rows);
+          filas = await pool.query("SELECT diaHora FROM horarioGuardias WHERE profesor='"+req.query.id+"' LIMIT 500");
+          let guardiasUser = (filas.rows);
+          let compas = "";
+          let guardiasU = "";
+            for (let i = 0; i < guardiasUser.length; i++) {
+              let filas = await pool.query("SELECT profesor, horas, puntos FROM horarioGuardias WHERE diaHora='"+guardiasUser[i].diaHora+"' LIMIT 500");
+              compas = JSON.stringify(filas.rows);
+              guardiasU = '{"diaHora":' +guardiasUser[i].diaHora+ ', "compas":' +compas+ '}';
+            }
+            res.send(`{"p": ${profes}, "g": ${grupos}, "h": ${horas}, "guardiasUser": ${guardiasU} }`);
         }
     }
 });
