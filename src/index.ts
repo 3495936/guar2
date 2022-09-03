@@ -21,7 +21,7 @@ app.get("/", async (req, res) => {
         
         } else {
             let profes = JSON.stringify(
-                ()=>{
+                async function() {
                     const { rows } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");
                     return rows;
                 })
