@@ -18,10 +18,10 @@ app.use(bodyParser.text({ type: "text/html" }));
 app.get("/", async (req, res) => {
     if (req.query.id !== undefined) {
         if (req.query.fecha !== undefined) {
-        
+            res.send(`Hola Fecha`);
         } else {
-            let filas = pool.query("SELECT id, nombre FROM usuarios LIMIT 500").promise();
-            let profes = await JSON.stringify(filas.rows);
+            let filas = await pool.query("SELECT * from usuarios");
+            let profes = JSON.stringify(filas.rows);
             res.send(`p: ${profes}, g: `);
         }
     }
