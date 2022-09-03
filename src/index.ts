@@ -22,7 +22,7 @@ app.get("/", async (req, res) => {
         } else {
             const { rows } = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");
             var profes = JSON.parse(rows);
-            res.send('"p":'+profes);
+            res.send("p: "+profes);
         }
     }
 });
