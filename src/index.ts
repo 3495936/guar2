@@ -20,7 +20,7 @@ app.get("/", async (req, res) => {
         if (req.query.fecha !== undefined) {
             res.send(`Hola Fecha`);
         } else {
-            let filas = await pool.query("SELECT * from usuarios");
+          let filas = await pool.query("SELECT * from usuarios");
           let profes = JSON.stringify(filas.rows);
           filas  = await pool.query("SELECT grupo FROM grupos LIMIT 500");
           let grupos = JSON.stringify(filas.rows);
@@ -29,11 +29,11 @@ app.get("/", async (req, res) => {
           filas = await pool.query("SELECT diaHora FROM horarioGuardias WHERE profesor='"+req.query.id+"' LIMIT 500");
           let guardiasUser = (filas.rows);
           let compas = "";
-          let guardiasU = "";
+          let guardiasU = new Array;
             for (let i = 0; i < guardiasUser.length; i++) {
               let filas = await pool.query("SELECT profesor, horas, puntos FROM horarioGuardias WHERE diaHora='"+guardiasUser[i].diaHora+"' LIMIT 500");
               compas = JSON.stringify(filas.rows);
-              guardiasU = '{"diaHora":' +guardiasUser[i].diaHora+ ', "compas":' +compas+ '}';
+              guardiasU.push('{"diaHora":' +guardiasUser[i].diaHora+ ', "compas":' +compas+ '}');
             }
             res.send(`{"p": ${profes}, "g": ${grupos}, "h": ${horas}, "guardiasUser": ${guardiasU} }`);
         }
