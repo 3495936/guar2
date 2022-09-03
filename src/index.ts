@@ -20,8 +20,7 @@ app.get("/", async (req, res) => {
         if (req.query.fecha !== undefined) {
         
         } else {
-            let profes = JSON.stringify(await pool.query("SELECT id, nombre FROM usuarios LIMIT 500")).rows();
-            
+            let profes = JSON.stringify(let {rows} = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500"));            
             res.send(`p: ${profes}, g: `);
         }
     }
