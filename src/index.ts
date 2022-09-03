@@ -21,7 +21,7 @@ app.get("/", async (req, res) => {
         
         } else {
             let filas = pool.query("SELECT id, nombre FROM usuarios LIMIT 500").promise();
-            let profes = await JSON.stringify(filas);
+            let profes = await JSON.stringify(filas.rows);
             res.send(`p: ${profes}, g: `);
         }
     }
