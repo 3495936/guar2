@@ -81,14 +81,14 @@ app.get("/users/", async (req, res) => {
 });
 
 app.get("/test/", async (req, res) => {
-  let filas = await pool.query("SELECT diaHora FROM horarioGuardias WHERE profesor='"+req.query.id+"' LIMIT 500");
-          let guardiasUser = (filas.rows);
+  let filas = await pool.query("select diahora from horarioguardias where profesor='"+req.query.id+"' limit 500");
+          let guardiasuser = (filas.rows);
           let compas = "";
-          let guardiasU = new Array;
-            for (let i = 0; i < guardiasUser.length; i++) {
-              let filas = await pool.query("SELECT profesor, horas, puntos FROM horarioGuardias WHERE diaHora='"+guardiasUser[i].diaHora+"' LIMIT 500");
-              compas = JSON.stringify(filas.rows);
-              guardiasU.push('{"diaHora":' +guardiasUser[i].diaHora+ ', "compas":' +JSON.stringify(compas)+ '}');
+          let guardiasu = new array;
+            for (let i = 0; i < guardiasuser.length; i++) {
+              let filas = await pool.query("select profesor, horas, puntos from horarioguardias where diahora='"+guardiasuser[i].diahora+"' limit 500");
+              compas = json.stringify(filas.rows);
+              guardiasu.push('{"diahora":' +guardiasuser[i].diahora+ ', "compas":' +json.stringify(compas)+ '}');
             }
-            res.send(`{"guardiasUser": ${JSON.stringify(guardiasU)} }`);
+            res.send(`{"guardiasuser": ${json.stringify(guardiasu)} }`);
 });
