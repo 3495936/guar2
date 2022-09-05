@@ -45,12 +45,12 @@ app.get("/", async (req, res) => {
           let grupos = JSON.stringify(filas.rows);
           filas = await pool.query("SELECT hora FROM horas ORDER BY orden LIMIT 500");
           let horas = JSON.stringify(filas.rows);
-          filas = await pool.query("SELECT diaHora FROM horarioGuardias WHERE profesor='"+req.query.id+"' LIMIT 500");
+          filas = await pool.query("SELECT diahora FROM horarioguardias WHERE profesor='"+req.query.id+"' LIMIT 500");
           let guardiasUser = (filas.rows);
           let compas = "";
           let guardiasU = new Array;
             for (let i = 0; i < guardiasUser.length; i++) {
-              let filas = await pool.query("SELECT profesor, horas, puntos FROM horarioGuardias WHERE diaHora='"+guardiasUser[i].diaHora+"' LIMIT 500");
+              let filas = await pool.query("SELECT profesor, horas, puntos FROM horarioguardias WHERE diahora='"+guardiasUser[i].diaHora+"' LIMIT 500");
               compas = JSON.stringify(filas.rows);
               guardiasU.push('{"diaHora":' +guardiasUser[i].diaHora+ ', "compas":' +JSON.stringify(compas)+ '}');
             }
