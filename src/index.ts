@@ -14,12 +14,11 @@ app.use(bodyParser.raw({ type: "application/vnd.custom-type" }));
 app.use(bodyParser.text({ type: "text/html" }));
 
 //Permitir hacer fetch:
-app.use(function(req, res, next) {
-// update to match the domain you will make the request from
-res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD");
-res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-next();
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+    next(); 
 });
 
 // URLs GET, POST
