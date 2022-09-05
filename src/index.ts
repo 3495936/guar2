@@ -87,8 +87,8 @@ app.get("/test/", async (req, res) => {
           let guardiasu = new array;
             for (let i = 0; i < guardiasuser.length; i++) {
               let filas = await pool.query("select profesor, horas, puntos from horarioguardias where diahora='"+guardiasuser[i].diahora+"' limit 500");
-              compas = json.stringify(filas.rows);
-              guardiasu.push('{"diahora":' +guardiasuser[i].diahora+ ', "compas":' +json.stringify(compas)+ '}');
+              compas = JSON.stringify(filas.rows);
+              guardiasu.push('{"diahora":' +guardiasuser[i].diahora+ ', "compas":' +JSON.stringify(compas)+ '}');
             }
-            res.send(`{"guardiasuser": ${json.stringify(guardiasu)} }`);
+            res.send(`{"guardiasuser": ${JSON.stringify(guardiasu)} }`);
 });
