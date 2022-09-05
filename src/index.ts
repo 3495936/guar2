@@ -84,7 +84,7 @@ app.get("/test/", async (req, res) => {
   let filas = await pool.query("select diahora from horarioguardias where profesor='"+req.query.id+"' limit 500");
           let guardiasuser = (filas.rows);
           let compas = "";
-          let guardiasu = new array;
+          let guardiasu = new Array;
             for (let i = 0; i < guardiasuser.length; i++) {
               let filas = await pool.query("select profesor, horas, puntos from horarioguardias where diahora='"+guardiasuser[i].diahora+"' limit 500");
               compas = JSON.stringify(filas.rows);
