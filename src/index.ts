@@ -80,7 +80,7 @@ app.get("/users/", async (req, res) => {
   res.status(200).json(rows);
 });
 
-app.get("/hora/", async (req, res) => {
+app.get("/test/", async (req, res) => {
   let filas = await pool.query("SELECT diaHora FROM horarioGuardias WHERE profesor='"+req.query.id+"' LIMIT 500");
           let guardiasUser = (filas.rows);
           let compas = "";
