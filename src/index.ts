@@ -15,7 +15,6 @@ app.use(bodyParser.text({ type: "text/html" }));
 
 //Permitir hacer fetch:
 app.use(function(req, res, next) {
-// update to match the domain you will make the request from
 res.header("Access-Control-Allow-Origin", "*");
 res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
 res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -50,9 +49,9 @@ app.get("/", async (req, res) => {
           let compas = "";
           let guardiasU = new Array;
             for (let i = 0; i < guardiasUser.length; i++) {
-              let filas = await pool.query("SELECT profesor, horas, puntos FROM horarioguardias WHERE diahora='"+guardiasUser[i].diaHora+"' LIMIT 500");
+              let filas = await pool.query("SELECT profesor, horas, puntos FROM horarioguardias WHERE diahora='"+guardiasUser[i].diahora+"' LIMIT 500");
               compas = JSON.stringify(filas.rows);
-              guardiasU.push('{"diaHora":' +guardiasUser[i].diaHora+ ', "compas":' +JSON.stringify(compas)+ '}');
+              guardiasU.push('{"diaHora":' +guardiasUser[i].diahora+ ', "compas":' +JSON.stringify(compas)+ '}');
             }
             res.send(`{"p": ${profes}, "g": ${grupos}, "h": ${horas}, "guardiasUser": ${JSON.stringify(guardiasU)} }`);
         }
