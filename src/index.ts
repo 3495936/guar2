@@ -53,7 +53,7 @@ app.get("/", async (req, res) => {
               compas = JSON.stringify(filas.rows);
               guardiasU.push('{"diaHora":"' +guardiasUser[i].diahora+ '", "compas":' +compas+ '}');
             }
-            res.send(`{"p": ${profes}, "g": ${grupos}, "h": ${horas}, "guardiasUser":[ ${(guardiasU) ]} }`);
+            res.send(`{"p": ${profes}, "g": ${grupos}, "h": ${horas}, "guardiasUser":[ ${(guardiasU)} ] }`);
         }
     }
 });
