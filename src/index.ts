@@ -51,7 +51,7 @@ app.get("/", async (req, res) => {
             for (let i = 0; i < guardiasUser.length; i++) {
               let filas = await pool.query("SELECT profesor, horas, puntos FROM horarioguardias WHERE diahora='"+guardiasUser[i].diahora+"' LIMIT 500");
               compas = JSON.stringify(filas.rows);
-              guardiasU.push('{"diaHora":"' +guardiasUser[i].diahora+ '", "compas":"' +compas+ '"}');
+              guardiasU.push('{"diaHora":"' +guardiasUser[i].diahora+ '", "compas":' +compas+ '}');
             }
             res.send(`{"p": ${profes}, "g": ${grupos}, "h": ${horas}, "guardiasUser": ${(guardiasU)} }`);
         }
