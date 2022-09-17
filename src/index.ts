@@ -41,9 +41,9 @@ app.get("/", async (req, res) => {
           let filas = await pool.query("SELECT id, nombre FROM usuarios LIMIT 500");
           let profes = JSON.stringify(filas.rows);
           filas  = await pool.query("SELECT grupo FROM grupos LIMIT 500");
-          let grupos = JSON.stringify(filas.rows.grupo);
+          let grupos = JSON.stringify(filas.rows);
           filas = await pool.query("SELECT hora FROM horas ORDER BY orden LIMIT 500");
-          let horas = JSON.stringify(filas.rows.hora);
+          let horas = JSON.stringify(filas.rows);
           filas = await pool.query("SELECT diahora FROM horarioguardias WHERE profesor='"+req.query.id+"' LIMIT 500");
           let guardiasUser = (filas.rows);
           let compas = "";
