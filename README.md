@@ -1,33 +1,31 @@
 ---
-title: ExpressJS Postgres
+título: enGuardia
 description: An ExpressJS server that connects to a PostgreSQL database
 tags:
-  - express
-  - postgresql
-  - typescript
+  - PHP API
+  - MariaDB
+  - VUE JS 3
+  - Pinia
 ---
 
-# ExpressJS Postgres Example
+# enGuardia
 
-This example starts an [ExpressJS](https://expressjs.com/) server that connects
-to a Railway PostgreSQL database.
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new?template=https%3A%2F%2Fgithub.com%2Frailwayapp%2Fexamples%2Ftree%2Fmaster%2Fexamples%2Fexpressjs-postgres&plugins=postgresql)
+Este software se ha realizado como parte del Proyecto Final de Desarrollo de Aplicaciones Web del CIFP Carlos III (Cartagena).
 
 ## ✨ Features
 
-- Postgres
-- Express
-- TypeScript
+- PHP API Backend
+- MariaDB
+- VUE JS 3
+- Pinia
 
-## 💁‍♀️ How to use
+## 💁‍♀️ Cómo usarlo
 
-- Install dependencies `yarn`
-- [Create a Railway project with the Postgres plugin](https://dev.new)
-- Connect to your Railway project `railway link`
-- Start the server `railway run yarn dev`
+Para obtener información de su uso e instalación revise:
+- Manual de usuario
+- Memoria técnica del proyecto.
 
-## 📝 Notes
+## 📝 Notas
 
-The server started simply returns the current time in the database. The SQL
-query is located in `src/index.js`.
+Este software se ha realizado como parte del Proyecto Final de Desarrollo de Aplicaciones Web del CIFP Carlos III (Cartagena).
+Licencia CC BY-NC-ND
