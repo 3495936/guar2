@@ -13,7 +13,7 @@ tags:
 enGuardia es una aplicación web que permite al personal de una empresa o institución llevar a cabo una gestión del servicio de guardia.
 Este software se ha realizado como parte del Proyecto Final de Desarrollo de Aplicaciones Web del CIFP Carlos III (Cartagena).
 
-## ✨ Features
+## ✨ Tecnologías
 
 - PHP API Backend
 - MariaDB
